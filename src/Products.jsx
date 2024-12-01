@@ -49,9 +49,12 @@ function Products() {
             </p>
           </div>
         )}
-        {products.map((product) => (
-          <div key={product.id}>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 p-5 shopping-card hover:scale-[1.1] transition-all ease-in-out duration-300 cursor-pointer rounded-xl w-fit  hover:shadow-[0px_0px_0px_1px_rgba(0,0,0,0.06),0px_1px_1px_-0.5px_rgba(0,0,0,0.06),0px_3px_3px_-1.5px_rgba(0,0,0,0.06),_0px_6px_6px_-3px_rgba(0,0,0,0.06),0px_12px_12px_-6px_rgba(0,0,0,0.06),0px_24px_24px_-12px_rgba(0,0,0,0.06)]">
+        <div className="flex justify-center items-center flex-wrap gap-5">
+          {products.map((product) => (
+            <div
+              key={product.id}
+              className="shopping-card hover:scale-[1.1] transition-all ease-in-out w-fit duration-300 cursor-pointer rounded-xl p-5 flex flex-col hover:shadow-[0px_0px_0px_1px_rgba(0,0,0,0.06),0px_1px_1px_-0.5px_rgba(0,0,0,0.06),0px_3px_3px_-1.5px_rgba(0,0,0,0.06),_0px_6px_6px_-3px_rgba(0,0,0,0.06),0px_12px_12px_-6px_rgba(0,0,0,0.06),0px_24px_24px_-12px_rgba(0,0,0,0.06)]"
+            >
               <div className="flex justify-center items-center">
                 <img
                   className="w-[80px] h-[80px] "
@@ -79,8 +82,8 @@ function Products() {
                 </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );
