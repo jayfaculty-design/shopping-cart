@@ -53,7 +53,7 @@ function Products() {
             <div className="shopping-card rounded-xl w-fit p-5 flex flex-col">
               <div className="flex justify-center items-center">
                 <img
-                  className="w-[50px] h-[50px] "
+                  className="w-[80px] h-[80px] "
                   src={product.image}
                   alt=""
                 />
