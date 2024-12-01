@@ -51,9 +51,9 @@ function Products() {
         {products.map((product) => (
           <div key={product.id}>
             <div className="shopping-card rounded-xl w-fit p-5 flex flex-col">
-              <div>
+              <div className="flex justify-center items-center">
                 <img
-                  className="w-[100px] h-[100px] "
+                  className="w-[50px] h-[50px] "
                   src={product.image}
                   alt=""
                 />
