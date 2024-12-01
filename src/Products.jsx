@@ -6,6 +6,7 @@ function Products() {
   const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState([]);
   const baseUrl = "https://fakestoreapi.com/products?limit=20";
+  const [cartItems, setCartItems] = useState([]);
 
   useEffect(() => {
     setLoading(true);
@@ -50,7 +51,7 @@ function Products() {
         )}
         {products.map((product) => (
           <div key={product.id}>
-            <div className="shopping-card rounded-xl w-fit p-5 flex flex-col">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 p-5 shopping-card hover:scale-[1.1] transition-all ease-in-out duration-300 cursor-pointer rounded-xl w-fit  hover:shadow-[0px_0px_0px_1px_rgba(0,0,0,0.06),0px_1px_1px_-0.5px_rgba(0,0,0,0.06),0px_3px_3px_-1.5px_rgba(0,0,0,0.06),_0px_6px_6px_-3px_rgba(0,0,0,0.06),0px_12px_12px_-6px_rgba(0,0,0,0.06),0px_24px_24px_-12px_rgba(0,0,0,0.06)]">
               <div className="flex justify-center items-center">
                 <img
                   className="w-[80px] h-[80px] "
@@ -62,6 +63,9 @@ function Products() {
               <div className="mt-9 flex flex-col gap-3">
                 <p className="border uppercase text-center border-lightBabu font-medium bg-lightBabu text-[12px]">
                   {product.category}
+                </p>
+                <p className="w-[150px] text-ellipsis overflow-hidden whitespace-nowrap">
+                  {product.title}
                 </p>
                 {/* <p className="w-[150px]">{product.title}</p> */}
                 <p className="font-bold">${product.price}</p>
