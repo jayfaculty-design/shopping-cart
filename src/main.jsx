@@ -1,4 +1,4 @@
-import { StrictMode } from 'react'
+git push -u origin mainimport { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
