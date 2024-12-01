@@ -5,7 +5,7 @@ function Products() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState([]);
-  const baseUrl = "https://fakestoreapi.com/products?limit=10";
+  const baseUrl = "https://fakestoreapi.com/products?limit=20";
 
   useEffect(() => {
     setLoading(true);
@@ -50,14 +50,29 @@ function Products() {
         )}
         {products.map((product) => (
           <div key={product.id}>
-            <div className="border h-[400px] w-fit p-5 flex flex-col">
-              <img className="w-[150px]" src={product.image} alt="" />
-              <p>{product.category}</p>
-              <p className="w-[150px]">{product.title}</p>
-              <p>${product.price}</p>
+            <div className="shopping-card rounded-xl w-fit p-5 flex flex-col">
               <div>
-                <button>Add to Cart</button>
-                <button>Details</button>
+                <img
+                  className="w-[160px] h-[160px] "
+                  src={product.image}
+                  alt=""
+                />
+              </div>
+
+              <div className="mt-9 flex flex-col gap-3">
+                <p className="border uppercase text-center border-lightBabu font-medium bg-lightBabu text-[12px]">
+                  {product.category}
+                </p>
+                {/* <p className="w-[150px]">{product.title}</p> */}
+                <p className="font-bold">${product.price}</p>
+                <div className="flex flex-row gap-3">
+                  <button className="text-[14px] transition-all duration-300 ease-in-out hover:bg-black font-semibold text-white bg-orange border-white border-[1px] p-2 rounded-xl">
+                    Add to Cart
+                  </button>
+                  <button className="border-orange  p-1 rounded-xl text-[14px]">
+                    Details
+                  </button>
+                </div>
               </div>
             </div>
           </div>

@@ -4,4 +4,10 @@
 
 body {
   font-family: "Clash Grotesk", sans-serif;
+ 
+}
+.shopping-card{
+  border: 1px solid rgb(209, 208, 208);
+  border-radius: 10px;
+  background: #fff;
 }
