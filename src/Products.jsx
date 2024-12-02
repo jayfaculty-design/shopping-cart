@@ -1,12 +1,14 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { CartContext } from "./Context/CartContext";
 
 function Products() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState([]);
-  const baseUrl = "https://fakestoreapi.com/products?limit=20";
-  const [cartItems, setCartItems] = useState([]);
+  const baseUrl = "https://fakestoreapi.com/products?limit=12";
+
+  const { addToCart, itemsCount, setItemsCount } = useContext(CartContext);
 
   useEffect(() => {
     setLoading(true);
@@ -73,7 +75,10 @@ function Products() {
                 {/* <p className="w-[150px]">{product.title}</p> */}
                 <p className="font-bold">${product.price}</p>
                 <div className="flex flex-row gap-3">
-                  <button className="text-[14px] transition-all duration-300 ease-in-out hover:bg-black font-semibold text-white bg-orange border-white border-[1px] p-2 rounded-xl">
+                  <button
+                    onClick={() => addToCart(product, product.title)}
+                    className="cart-btn text-[14px] transition-all duration-300 ease-in-out hover:bg-black font-semibold text-white bg-orange border-white border-[1px] p-2 rounded-xl"
+                  >
                     Add to Cart
                   </button>
                   <button className="border-orange  p-1 rounded-xl text-[14px]">
