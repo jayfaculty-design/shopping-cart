@@ -8,7 +8,7 @@ function Products() {
   const [products, setProducts] = useState([]);
   const baseUrl = "https://fakestoreapi.com/products?limit=12";
 
-  const { addToCart, itemsCount, setItemsCount } = useContext(CartContext);
+  const { addToCart } = useContext(CartContext);
 
   useEffect(() => {
     setLoading(true);

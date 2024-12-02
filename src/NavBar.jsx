@@ -7,7 +7,7 @@ import { CartContext } from "./Context/CartContext";
 
 function NavBar() {
   const { isOpen, setIsOpen } = useContext(SideBarContext);
-  const { addToCart, itemsCount, setItemsCount } = useContext(CartContext);
+  console.log(useContext(CartContext));
 
   return (
     <div className="bg-white z-[100] fixed top-0 left-0 w-[100%] flex justify-between pl-5 pr-5 pb-5 pt-5 shadow-[0px_0px_0px_1px_rgba(0,0,0,0.06),0px_1px_1px_-0.5px_rgba(0,0,0,0.06),0px_3px_3px_-1.5px_rgba(0,0,0,0.06),_0px_6px_6px_-3px_rgba(0,0,0,0.06),0px_12px_12px_-6px_rgba(0,0,0,0.06),0px_24px_24px_-12px_rgba(0,0,0,0.06)]">
@@ -23,7 +23,7 @@ function NavBar() {
       >
         <FontAwesomeIcon color="white" icon={faCartShopping} />
         <span className="text-[12px] text-white flex items-center justify-center absolute z-[102] h-[20px] w-[20px] top-[12px] right-[10px] p-1 rounded-[50%] bg-babu">
-          {itemsCount}
+          0
         </span>
       </div>
     </div>
