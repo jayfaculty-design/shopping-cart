@@ -2,8 +2,10 @@ import { faArrowRight, faForward } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext } from "react";
 import { SideBarContext } from "./Context/SideBarContext";
+import { CartContext } from "./Context/CartContext";
 
 function Sidebar() {
+  const { addToCart, itemsCount, setItemsCount } = useContext(CartContext);
   const { isOpen, handleClose } = useContext(SideBarContext);
   return (
     <>
