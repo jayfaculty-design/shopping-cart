@@ -1,9 +1,22 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 export const CartContext = createContext();
 
 function CartContextProvider({ children }) {
   const [cart, setCart] = useState([]);
+
+  const [itemAmount, setItemAmount] = useState(0);
+
+  //update item amount
+  useEffect(() => {
+    if (cart) {
+      const amount = cart.reduce((accumulator, currentItem) => {
+        return accumulator + currentItem.amount;
+      }, 0);
+      setItemAmount(amount);
+    }
+  }, [cart]);
+
   const addToCart = (products, id) => {
     const newItem = { ...products, amount: 1 };
     // checking if item is already in the cart
@@ -19,10 +32,56 @@ function CartContextProvider({ children }) {
         }
       });
       setCart(newCart);
+    } else {
+      setCart([...cart, newItem]);
     }
   };
+
+  // remove from cart
+  function PopFromCart(id) {
+    const newCart = cart.filter((item) => {
+      return item.id !== id;
+    });
+    setCart(newCart);
+  }
+  function emptyCart() {
+    setCart([]);
+  }
+  function increaseAmount(id) {
+    const cartItem = cart.find((items) => items.id === id);
+    addToCart(cartItem, id);
+  }
+  function decreaseAmount(id) {
+    const cartItem = cart.find((items) => {
+      return items.id === id;
+    });
+    if (cartItem) {
+      const newCart = cart.map((items) => {
+        if (items.id === id) {
+          return { ...items, amount: cartItem.amount - 1 };
+        } else {
+          return items;
+        }
+      });
+      setCart(newCart);
+    }
+    if (cartItem.amount < 2) {
+      PopFromCart(id);
+    }
+  }
+
   return (
-    <CartContext.Provider value={{ addToCart }}>
+    <CartContext.Provider
+      value={{
+        cart,
+        addToCart,
+        PopFromCart,
+        emptyCart,
+        increaseAmount,
+        decreaseAmount,
+        itemAmount,
+      }}
+    >
       {children}
     </CartContext.Provider>
   );
