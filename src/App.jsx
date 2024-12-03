@@ -10,7 +10,6 @@ function App() {
       <div className="overflow-hidden">
         <Sidebar />
         <NavBar />
-        <Top />
         <Products />
         <Footer />
       </div>

@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { CartContext } from "./Context/CartContext";
 import { Link } from "react-router-dom";
 import { ProductContext } from "./Context/ProductContext";
+import Top from "./Top";
 
 function Products() {
   const { products, setProducts } = useContext(ProductContext);
@@ -36,6 +37,7 @@ function Products() {
 
   return (
     <>
+      <Top />
       <div className="p-2">
         <div className="mt-[100px] pl-5 pr-5">
           <h1 className="font-semibold text-2xl">Products</h1>
