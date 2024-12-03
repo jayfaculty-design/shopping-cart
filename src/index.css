@@ -14,3 +14,6 @@ body {
 .shopping-card:hover .cart-btn {
   background: black;
 }
+.b-friday {
+  font-family: 'Montserrat', sans-serif;
+}

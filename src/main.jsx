@@ -6,15 +6,18 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { routes } from "./routes";
 import SidebarProvider from "./Context/SideBarContext";
 import CartContextProvider from "./Context/CartContext";
+import ProductProvider from "./Context/ProductContext";
 
 const router = createBrowserRouter(routes);
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <SidebarProvider>
-      <CartContextProvider>
-        <RouterProvider router={router} />
-      </CartContextProvider>
-    </SidebarProvider>
+    <ProductProvider>
+      <SidebarProvider>
+        <CartContextProvider>
+          <RouterProvider router={router} />
+        </CartContextProvider>
+      </SidebarProvider>
+    </ProductProvider>
   </StrictMode>
 );
