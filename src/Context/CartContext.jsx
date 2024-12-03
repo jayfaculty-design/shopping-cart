@@ -12,7 +12,7 @@ function CartContextProvider({ children }) {
   useEffect(() => {
     const total = cart.reduce((accumulator, currentItem) => {
       return accumulator + currentItem.price * currentItem.amount;
-    }, 0); 
+    }, 0);
     setTotalPrice(total);
   });
 
@@ -26,24 +26,22 @@ function CartContextProvider({ children }) {
     }
   }, [cart]);
 
-  const addToCart = (products, id) => {
-    const newItem = { ...products, amount: 1 };
-    // checking if item is already in the cart
+  const addToCart = (product, id) => {
+    setCart((prevCart) => {
+      // Check if the item is already in the cart
+      const existingItem = prevCart.find((item) => item.id === id);
 
-    const cartItem = cart.find((item) => {
-      return item.id === id;
+      if (existingItem) {
+        // Increment the amount of the existing item
+        return prevCart.map((item) =>
+          item.id === id ? { ...item, amount: item.amount + 1 } : item
+        );
+      } else {
+        // Add the new item to the cart
+        const newItem = { ...product, amount: 1 };
+        return [...prevCart, newItem];
+      }
     });
-    // checking if item already exist in
-    if (cartItem) {
-      const newCart = [...cart].map((item) => {
-        if (item.id === id) {
-          return { ...item, amount: cartItem.amount + 1 };
-        }
-      });
-      setCart(newCart);
-    } else {
-      setCart([...cart, newItem]);
-    }
   };
 
   // remove from cart
@@ -57,25 +55,25 @@ function CartContextProvider({ children }) {
     setCart([]);
   }
   function increaseAmount(id) {
-    const cartItem = cart.find((items) => items.id === id);
-    addToCart(cartItem, id);
+    const newCart = cart.map((item) => {
+      if (item.id === id) {
+        return { ...item, amount: item.amount + 1 }; // Increment the amount
+      }
+      return item; // Keep other items unchanged
+    });
+    setCart(newCart); // Update the cart state
   }
   function decreaseAmount(id) {
-    const cartItem = cart.find((items) => {
-      return items.id === id;
-    });
+    const cartItem = cart.find((item) => item.id === id);
     if (cartItem) {
-      const newCart = cart.map((items) => {
-        if (items.id === id) {
-          return { ...items, amount: cartItem.amount - 1 };
-        } else {
-          return items;
-        }
-      });
-      setCart(newCart);
-    }
-    if (cartItem.amount < 2) {
-      PopFromCart(id);
+      if (cartItem.amount === 1) {
+        PopFromCart(id); // Remove item if the amount is 1
+      } else {
+        const newCart = cart.map((item) =>
+          item.id === id ? { ...item, amount: cartItem.amount - 1 } : item
+        );
+        setCart(newCart);
+      }
     }
   }
 

@@ -11,15 +11,24 @@ function ProductDetails() {
   const { addToCart } = useContext(CartContext);
   const { products } = useContext(ProductContext);
 
-  // get a product based on id
-  const product = products.find((item) => {
-    return item.id === parseInt(id);
-  });
+  // Ensure `products` is loaded
+  if (!products || products.length === 0) {
+    return (
+      <h1 className="h-screen flex justify-center items-center">
+        Loading Products...
+      </h1>
+    );
+  }
 
-  // if no product found
+  // Get product based on id
+  const product = products.find((item) => item.id === parseInt(id, 10));
+
+  // If no product found
   if (!product) {
     return (
-      <h1 className="h-screen flex justify-center items-center">Loading...</h1>
+      <h1 className="h-screen flex justify-center items-center">
+        Product Not Found
+      </h1>
     );
   }
   return (
