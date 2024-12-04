@@ -24,7 +24,13 @@ function Sidebar() {
             icon={faArrowRight}
           />
         </div>
-        <div className="flex p-5 flex-col h-[514px] lg:h-[640px] overflow-y-auto overflow-x-hidden">
+        <div
+          style={{
+            scrollbarColor: "#FF5A5F #f1f1f1",
+            scrollbarWidth: "thin",
+          }}
+          className="flex p-5 flex-col h-[514px] lg:h-[640px] overflow-y-auto overflow-x-hidden"
+        >
           {cart.map((item) => {
             return (
               <>

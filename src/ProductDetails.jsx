@@ -45,7 +45,7 @@ function ProductDetails() {
                 alt=""
               />
 
-              <div className="flex gap-2 flex-col justify-center items-center">
+              <div className="flex gap-2 flex-col justify-center items-center pl-10 pr-10 md:text-[14px] font-medium text-[12px]">
                 <h1 className="text-[15px] max-w-[300px] mx-auto mb-2 font-medium text-center">
                   {product.title}
                 </h1>

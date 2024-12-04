@@ -2,10 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: #00A699 #f2f2f2;
+}
+
 body {
   font-family: "Clash Grotesk", sans-serif;
  
 }
+
 .shopping-card{
   border: 1px solid rgb(209, 208, 208);
   border-radius: 10px;
@@ -16,4 +23,25 @@ body {
 }
 .b-friday {
   font-family: 'Montserrat', sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+/* Style the scrollbar track (the background area) */
+::-webkit-scrollbar-track {
+  background: #00A699;
+}
+
+/* Style the scrollbar thumb (the scrolling element) */
+::-webkit-scrollbar-thumb {
+  background: #00A699;
+  border-radius: 6px; /* For rounded edges */
+}
+
+/* Style when the scrollbar thumb is active (while scrolling) */
+::-webkit-scrollbar-thumb:active {
+  background: #00A699;
 }
